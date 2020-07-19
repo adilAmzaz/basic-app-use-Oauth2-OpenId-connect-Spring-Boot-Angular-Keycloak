@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top shadow">
+    <ul class="navbar-nav mr-auto" >
+        <li class="nav-item">
+            <a class="nav-link"  [routerLink]="['/home']">Accueil</a>
+        </li>
+    </ul>
+
+    <ul *ngIf="isConnected()" class="navbar-nav ml-auto" >
+        <p *ngIf = "isConnected()" style="color: white;">Bonjour {{completeName}}</p>
+    </ul>
+    <ul class="navbar-nav ml-auto" >
+        <li class="nav-item" *ngIf="!isConnected()">
+            <a class="nav-link" [routerLink]="['/sign-up']" >Inscription</a>
+        </li>
+        <li *ngIf="!isConnected()" class="nav-item">
+            <a class="nav-link" [routerLink]="['/log-in']" >Connexion</a>
+        </li>
+        <li *ngIf="isAdmin()" class="nav-item">
+            <div class="dropdown show">
+                    <a  id = "outilsAdmin" href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Outils Admin</a>
+                
+                <div class="dropdown-menu" aria-labelledby="outilsAdmin">
+                    <a class="dropdown-item" [routerLink]="['/listOfUsers']">Listes des utilsateurs</a>
+                </div>
+            </div>
+        </li>
+
+        <li *ngIf="isConnected()" class="nav-item">
+            <button class="btn btn-danger" (click) ="logOut()" >Déconnexion</button> <!--(click)="disconnect()"-->
+        </li>
+    </ul>
+</nav>

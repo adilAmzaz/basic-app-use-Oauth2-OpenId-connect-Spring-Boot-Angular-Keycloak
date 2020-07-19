@@ -1,0 +1,33 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th scope="col">username/email</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">phone number</th>
+        <th scope="col">address</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listUsers; let i = index">
+        <th scope="row">{{item.Id}}</th>
+        <td>{{item.username}}</td>
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.address}} {{item.city}} {{item.zipCode}}</td>
+        <td>
+          <!--<div class="checkbox">
+            <label>
+              <input type="checkbox" data-toggle="toggle" toggled(i)>
+              is admin
+            </label>
+          </div>
+        -->
+        </td>
+      </tr>
+
+    </tbody>
+  </table>

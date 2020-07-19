@@ -1,0 +1,11 @@
+.table {
+    margin: auto;
+    width: 50% !important; 
+    background-color: #F7F1F0;
+    height: 20%;
+ }
+ .image {
+     width: 100% !important;
+     height: auto;
+    background-image: url("C:/Users/utilisateur/Downloads/gouts-d-eau.jpg");
+   }

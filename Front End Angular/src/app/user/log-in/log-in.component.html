@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<br>
+<div class="login-form">
+   
+    <form
+            [formGroup]="userLogInForm"
+            (ngSubmit)="login()">
+    <table class="table">
+
+        <tr>
+            <h3>Identifiants : </h3>
+        </tr>
+        <tr>
+                 <label for="username" class="required">Username : </label>
+            <td> <input type="text" name="username"
+                placeholder="example@mail.com" formControlName="username" id="username" class="form-control" /></td>
+        </tr>
+
+        <tr>
+            <label for="password" class="required">Password : </label>
+            <td> <input type="password" name="password" formControlName="password" 
+                placeholder="********" id="password" class="form-control" /></td>
+        </tr>
+            
+
+
+            <button type="submit"  class="btn btn-dark" >Se Connecter</button>
+            <!--<td *ngIf="!showErrorMessage">please complete all necessary fields</td> -->
+
+    </table>   
+    
+    
+    </form>
+</div>

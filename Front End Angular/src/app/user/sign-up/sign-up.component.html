@@ -1,0 +1,88 @@
+<br>
+<br>
+<div class="signup-form">
+   
+    <form
+            [formGroup]="userForm"
+            (ngSubmit)="signUp()">
+    <table class="table">
+            <td colspan="2"><h4>Informations of The User : </h4></td>
+            <tr>
+                    <th scope="row">      <label for="firstName" class="required">FirstName : </label> </th> 
+                    <td> <input type="text" name="firstName" formControlName="firstName" id="firstName" class="form-control" /></td>
+            </tr>
+            <tr>
+                    <th scope="row"><label for="lastName" >LastName : </label>
+                    <td> <input type="text" name="lastName" formControlName="lastName" id="lastName"class="form-control" />
+            </tr>
+            <tr>
+                <th scope="row"> <label for="username" class="required">Email : </label> </th>
+                <td> <input type="email" name="username" formControlName="username" id="username" class="form-control"/></td>
+                <td *ngIf="!showErrorEmailMessage " style="color: red;">email format is not valid</td>
+
+        </tr>
+        <tr>
+            <th scope="row"> <label for="password" class="required">Password : </label> </th>
+            <td> <input type="password" name="password" formControlName="password"  id="password" class="form-control"/></td>
+            <td *ngIf="!userForm.controls['password'].valid && !showErrorMessage">this field is necessary</td>
+
+        </tr>
+        <tr>
+                <th scope="row"> <label for="reaptedPassword" class="required">Repeat your password : </label> </th>
+                <td> <input type="password" name="reaptedPassword" (keyup)="modifyRepeatedPassword($event)" class="form-control" id="reaptedPassword"/></td>
+                <td *ngIf="(!showErrorPasswordMessage )" style="color: red;">passwords are not corresponding</td>
+            </tr>
+            <tr>
+                    <th scope="row"> <label for="isFamele" class="required"></label></th>
+                    <td>                         
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="isFamele" [value]="true"
+                                formControlName="isFamele"  checked>
+                            <label class="form-check-label" for="isFamele">Femme</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="form-check-input" id="male" [value]="false"
+                                formControlName="isFamele">
+                            <label class="form-check-label" for="male">Homme</label>
+                        </div></td>
+            </tr>
+            <tr>
+                    <th scope="row"> <label for="birtheDate" class="required">Birth date : </label></th>
+                    <td> <input type="date" name="birtheDate" formControlName="birtheDate" id="birtheDate"class="form-control" /></td>
+                    <td *ngIf="!userForm.controls['birtheDate'].valid && !showErrorMessage">this field is necessary</td>
+
+            </tr>
+
+            <tr>
+                    <th scope="row"> <label for="phone" class="required">Phone : </label> </th>
+                    <td> <input type="number" name="phone" formControlName="phone" id="phone" class="form-control"/></td>
+                    <td *ngIf="!userForm.controls['phone'].valid && !showErrorMessage">this field is necessary</td>
+
+            </tr>
+            <tr>
+                    <th scope="row"> <label for="adress" class="required">Adress : </label> </th>
+                    <td> <input type="text" name="adress" formControlName="adress" id="adress" class="form-control"/></td>
+                    <td *ngIf="!userForm.controls['adress'].valid && !showErrorMessage">this field is necessary</td>
+
+            </tr>
+            <tr>
+                    <th scope="row"> <label for="zipCode" class="required">ZipCode : </label> </th>
+                    <td> <input type="number" name="zipCode" formControlName="zipCode" id="zipCode" class="form-control"/></td>
+                    <td *ngIf="!userForm.controls['zipCode'].valid && !showErrorMessage">this field is necessary</td>
+
+            </tr>
+            <tr>
+                    <th scope="row"> <label for="city" class="required">City : </label> </th>
+                    <td> <input type="text" name="city" formControlName="city" id="city" class="form-control"/></td>
+                    <td *ngIf="!userForm.controls['city'].valid && !showErrorMessage">this field is necessary</td>
+            </tr>
+
+            <button type="submit"  class="btn btn-dark" >SUBMIT</button>
+            <td *ngIf="!showErrorMessage">please complete all necessary fields</td>
+
+    </table>   
+    
+    
+    </form>
+</div>
