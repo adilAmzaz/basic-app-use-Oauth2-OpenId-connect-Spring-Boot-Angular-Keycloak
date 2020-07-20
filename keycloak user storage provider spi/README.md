@@ -1,5 +1,6 @@
 Example User Storage Provider with EJB and JPA
 ===================================================
+source : https://github.com/keycloak/keycloak-quickstarts
 
 This is an example of the User Storage SPI implemented using EJB and JPA.  You must first deploy the datasource it uses.
 Start up the Keycloak server.  Then in the directory of this example type the following maven command:
