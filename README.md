@@ -10,6 +10,6 @@ This web application is a basic web application and its main goal is using the p
 - Spring Data JPA
 - Mysql 8.0
 
-One of the characteristics of this application is that it uses an external database of keycloak, by using [keycloak user storage spi](https://www.keycloak.org/docs/latest/server_development/#_user-storage-spi) (more details in the project [keycloak user storage provider spi](keycloak%20user%20storage%20provider%20spi))
+One of the characteristics of this application is that it uses an external database of keycloak, by using keycloak user storage spi [documentation here](https://www.keycloak.org/docs/latest/server_development/#_user-storage-spi) (more details in the project [keycloak user storage provider spi](keycloak%20user%20storage%20provider%20spi))
 
 
