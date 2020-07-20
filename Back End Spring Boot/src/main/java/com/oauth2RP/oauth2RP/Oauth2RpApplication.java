@@ -38,15 +38,15 @@ public class Oauth2RpApplication implements CommandLineRunner {
 		roleRepo.save(role);
 		User firstAdmin = new User();
 		firstAdmin.setPassword("123");
-		firstAdmin.setUsername("aa@gmail.com");
+		firstAdmin.setUsername("admin@admin.com");
 		firstAdmin.setFirstName("root");
 		firstAdmin.setLastName("root");
 		firstAdmin.setRoles(setRole);
 		firstAdmin.setAdress("69 rue de la République");
 		firstAdmin.setBirtheDate( LocalDate.of(1993, 11, 01));
-		firstAdmin.setCity("Montreuil");
+		firstAdmin.setCity("Paris");
 		firstAdmin.setIsFamele(false);
-		firstAdmin.setPhone("0618803007");
+		firstAdmin.setPhone("0612345678");
 		firstAdmin.setZipCode("93100");
 		userRepo.save(firstAdmin);
 		
