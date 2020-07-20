@@ -53,7 +53,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(grantedAuthorityMapper);
     	auth.authenticationProvider(keycloakAuthenticationProvider);
     	
-    	/*//The configuration bellow are to permit identification and role mapping when public realm
+    	/*//The configuration bellow allow identification and role mapping when the realm is public
         KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
         auth.authenticationProvider(keycloakAuthenticationProvider);

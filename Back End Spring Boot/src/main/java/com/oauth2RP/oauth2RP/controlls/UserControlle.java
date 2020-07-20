@@ -35,7 +35,7 @@ public class UserControlle {
 	RoleRepo roleRepo ;
 
     @GetMapping("/user/get/username/{username}")  
-	//@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public User getUserByUsername(@PathVariable("username") String username)
     {
     	Optional<User> u = userRepo.findByUsername(username);
