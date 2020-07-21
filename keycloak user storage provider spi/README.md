@@ -13,7 +13,7 @@ So we have two kind of users, the first in the external database and the second 
  You can use this tutorial https://dev.to/donadams50/connect-mysql-server-to-keycloak-3d6e
 
 - I changed manually the configuration of standalone to define ExampleXADS as an xa-datasource : 
-‘<xa-datasource jndi-name="java:jboss/datasources/ExampleXADS" pool-name="ExampleXADS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
+```<xa-datasource jndi-name="java:jboss/datasources/ExampleXADS" pool-name="ExampleXADS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
        <driver>mysql</driver>
      <xa-datasource-property name="URL">jdbc:mysql://localhost:3306/keycloak</xa-datasource-property> 
        <security>
@@ -25,7 +25,7 @@ So we have two kind of users, the first in the external database and the second 
        <validate-on-match>true</validate-on-match>
        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
    </validation
-</xa-datasource>’
+</xa-datasource>```
 
 
 
