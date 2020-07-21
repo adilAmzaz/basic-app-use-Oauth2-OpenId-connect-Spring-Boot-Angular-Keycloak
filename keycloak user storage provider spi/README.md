@@ -31,9 +31,11 @@ So we have two kind of users, the first in the external database and the second 
 ```
 
 - Generate the jar of this project and put it in standalone/deployments or you can use this following maven command in the directory of this project :
-   ```
- mvn -Padd-datasource install
+
 ```
+mvn -Padd-datasource install
+```
+
 
 
 To deploy the provider, run the following maven command:
