@@ -101,7 +101,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
     public UserModel getUserById(String id, RealmModel realm) {
         log.info("getUserById: " + id);
         String persistenceId = StorageId.externalId(id);
-        UserEntity entity = em.find(UserEntity.class, persistenceId);
+        UserEntity entity = em.find(UserEntity.class, Long.parseLong(persistenceId));
         if (entity == null) {
             log.info("could not find user by id: " + id);
             return null;
@@ -203,10 +203,14 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
     public String getPassword(UserModel user) {
         log.info("getPassword");
         log.info("type of argument is : " +user.getClass());
-        log.info("the user is  : "+user.toString());
+        log.info("the user's username is  : "+user.getUsername());
         TypedQuery<UserEntity> query = em.createNamedQuery("getUserByUsername", UserEntity.class);
         query.setParameter("username", user.getUsername());
         List<UserEntity> result = query.getResultList();
+        //log.info("result is "+result);
+        //log.info(".get(0) "+result.get(0));
+        if(result.isEmpty())
+        	return null;
          return  result.get(0).getPassword();
     }
 

@@ -29,7 +29,7 @@ public class User {
 	private String phone;
 	private String adress;
 	private String zipCode;
-	
+	private String email;
 	@Column(nullable=false,unique = true, length = 50)
 	private String username;
 	
@@ -47,6 +47,15 @@ public class User {
 	}
 	public void setId(Long id) {
 		Id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setFamele(boolean isFamele) {
+		this.isFamele = isFamele;
 	}
 	public String getLastName() {
 		return lastName;
@@ -73,10 +82,11 @@ public class User {
 		this.birtheDate = birtheDate;
 	}
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
     public void setPassword(String password) {
-    	this.password = com.oauth2RP.oauth2RP.utils.Utils.bcryptEncoder.encode(password);
+    	//this.password = com.oauth2RP.oauth2RP.utils.Utils.bcryptEncoder.encode(password);
+    	this.password = password;
     }
 	public String getPhone() {
 		return phone;
@@ -101,6 +111,8 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+		if(this.email == null)
+			this.email = username;
 	}
 	public String getCity() {
 		return city;
