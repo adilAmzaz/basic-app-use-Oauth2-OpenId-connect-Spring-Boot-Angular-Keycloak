@@ -19,14 +19,18 @@ package org.keycloak.examples.storage.user;
 import org.jboss.logging.Logger;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.component.ComponentModel;
+import org.keycloak.models.ClientModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
+import org.keycloak.models.RoleModel;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>
@@ -138,5 +142,31 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
         } else {
             return super.getAttribute(name);
         }
+    }
+    @Override
+    public Set<RoleModel> getRoleMappings() {
+    	log.info("get Role Mapping");
+    	log.debug("getRoleMappings");
+    	
+    	Set<RoleModel> roles = new HashSet<RoleModel>();
+    	for (Role role : entity.getRoles()) {
+    		log.info("adding role : "+role.getName());
+			roles.add(role);
+		}
+
+    	return roles;
+    }
+    @Override
+    public Set<RoleModel> getClientRoleMappings(ClientModel app) {
+    	log.info("get Client Role Mapping");
+    	log.debug("getClientRoleMappings");
+    	
+    	Set<RoleModel> roles = new HashSet<RoleModel>();
+    	for (Role role : entity.getRoles()) {
+    		log.info("adding role : "+role.getName());
+			roles.add(role);
+		}
+
+    	return roles;
     }
 }

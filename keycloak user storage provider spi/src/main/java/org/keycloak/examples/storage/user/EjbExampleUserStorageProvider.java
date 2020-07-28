@@ -32,23 +32,22 @@ import org.keycloak.models.cache.CachedUserModel;
 import org.keycloak.models.cache.OnUserCache;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageProvider;
+import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 import org.keycloak.storage.user.UserLookupProvider;
 import org.keycloak.storage.user.UserQueryProvider;
 import org.keycloak.storage.user.UserRegistrationProvider;
-
 import javax.ejb.Local;
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>
@@ -68,7 +67,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
     protected EntityManager em;
     protected ComponentModel model;
     protected KeycloakSession session;
-
+    protected Properties properties;
     public void setModel(ComponentModel model) {
         this.model = model;
     }
@@ -106,8 +105,47 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
             log.info("could not find user by id: " + id);
             return null;
         }
-        return new UserAdapter(session, realm, model, entity);
-    }
+        UserModel userModel = new UserAdapter(session, realm, model,entity);
+        
+        /*
+         return new AbstractUserAdapterFederatedStorage(session, realm, model) {
+
+			@Override
+			public String getUsername() {
+				// TODO Auto-generated method stub
+				return userModel.getUsername();
+			}
+
+			@Override
+			public void setUsername(String username) {
+				userModel.setUsername(username);
+				
+			}
+			
+		    @Override
+		    public String getEmail() {
+				return userModel.getEmail();
+		    
+		    }
+		    @Override
+		    public void setEmail(String email) {
+		    	userModel.setEmail(email);
+		    }
+		    
+		    @Override
+		    public boolean isEnabled() {
+		    	return true;
+		    }
+		    
+		    @Override
+		    public Set<RoleModel> getRoleMappings() {
+		    	return entity.getRoles();
+		    }
+        
+        };
+        */
+        return userModel;
+        }
 
     @Override
     public UserModel getUserByUsername(String username, RealmModel realm) {
@@ -120,8 +158,9 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
             return null;
         }
 
-        return new UserAdapter(session, realm, model, result.get(0));
-    }
+        UserModel userModel = new UserAdapter(session, realm, model, result.get(0));
+        return userModel;   
+        }
 
     @Override
     public UserModel getUserByEmail(String email, RealmModel realm) {
@@ -130,7 +169,8 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
         query.setParameter("email", email);
         List<UserEntity> result = query.getResultList();
         if (result.isEmpty()) return null;
-        return new UserAdapter(session, realm, model, result.get(0));
+        UserModel userModel = new UserAdapter(session, realm, model, result.get(0));
+        return userModel;
     }
 
 
